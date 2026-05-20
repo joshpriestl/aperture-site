@@ -1,0 +1,80 @@
+@import "@fontsource/fraunces/400.css";
+@import "@fontsource/fraunces/400-italic.css";
+@import "@fontsource/fraunces/500.css";
+@import "@fontsource-variable/geist";
+@import "@fontsource-variable/geist-mono";
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --base: #ecf0f3;
+  --surface: #f5f7f9;
+  --card: #ffffff;
+  --ink: #14181c;
+  --ink-soft: #4a5560;
+  --ink-muted: #8896a3;
+  --hairline: #d4dbe0;
+
+  --audit-bg-a: #c5d4d0;
+  --audit-bg-b: #e2e9e6;
+  --audit-chip-bg: #d6e0dc;
+  --audit-chip-tx: #3d4e4a;
+
+  --bp-bg-a: #e6d4ad;
+  --bp-bg-b: #f0e6d0;
+  --bp-chip-bg: #ebd9b5;
+  --bp-chip-tx: #6b5430;
+
+  --bd-bg-a: #b8c5a3;
+  --bd-bg-b: #d4dcc4;
+  --bd-chip-bg: #c8d3b3;
+  --bd-chip-tx: #424d2a;
+
+  --en-bg-a: #cdb8bd;
+  --en-bg-b: #ddc8cd;
+  --en-chip-bg: #d4bec3;
+  --en-chip-tx: #5a2e36;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  min-height: 100vh;
+  margin: 0;
+  background: var(--base);
+  color: var(--ink);
+  font-family: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  text-rendering: geometricPrecision;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+}
+
+::selection {
+  background: var(--ink);
+  color: var(--card);
+}
+
+:focus-visible {
+  outline: 2px solid var(--ink);
+  outline-offset: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    scroll-behavior: auto !important;
+    transition-duration: 1ms !important;
+  }
+}
