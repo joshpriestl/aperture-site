@@ -196,6 +196,120 @@ export const whatApertureBuilds = {
   ],
 } as const;
 
+export const buyerFit = {
+  eyebrow: "WHO THIS IS FOR",
+  headline: "Built for operationally stretched firms",
+  body: "Aperture is built for businesses where growth has created operational drag: more leads, more delivery, more tools, more reporting, and too much still sitting in the founder's head.",
+  notFor:
+    "Not built for teams looking for another dashboard. Built for operators who need diagnosis, systems and execution.",
+  examples: [
+    "professional services firms",
+    "agencies",
+    "advisory businesses",
+    "property groups",
+    "accounting and finance firms",
+    "founder-led SMEs",
+    "growing teams with operational complexity",
+  ],
+} as const;
+
+export const operatingSignals = {
+  eyebrow: "OPERATIONAL SIGNALS",
+  headline: "Signals we usually find before the score confirms it",
+  body: "The Audit gives the problem structure. These are the patterns that usually appear before the score makes them visible.",
+  items: [
+    "The founder is still the reporting layer",
+    "Follow-up relies on memory",
+    "Pipeline visibility lives across spreadsheets",
+    "Proposals are rebuilt manually",
+    "AI tools exist but workflows do not",
+    "Reports arrive too late to change decisions",
+    "Customer data is duplicated across systems",
+    "No one owns the operating rhythm",
+  ],
+} as const;
+
+export const auditJourney = {
+  eyebrow: "AFTER THE AUDIT",
+  headline: "What happens after the Audit",
+  body: "The free diagnostic creates the first read. From there, Aperture moves from score to sequence, then from sequence to installed systems.",
+  steps: [
+    {
+      label: "Audit",
+      detail: "diagnosis and Aperture Score",
+    },
+    {
+      label: "Blueprint",
+      detail: "deeper assessment and sequenced plan",
+    },
+    {
+      label: "Build",
+      detail: "systems, dashboards, agents and workflows installed",
+    },
+    {
+      label: "Engine",
+      detail: "ongoing operating cadence and optimisation",
+    },
+  ],
+} as const;
+
+export const exampleOutputs = {
+  eyebrow: "OUTPUT PREVIEW",
+  headline: "Example outputs",
+  body: "The work is practical by design. Aperture turns the assessment into artefacts an operator can review, approve and run.",
+  cards: [
+    {
+      title: "Blueprint page preview",
+      rows: ["priority areas", "cost of inaction", "recommended sequence", "Build proposal placeholder"],
+    },
+    {
+      title: "Founder dashboard preview",
+      rows: ["pipeline value", "overdue follow-ups", "proposal conversion", "AI weekly summary"],
+    },
+    {
+      title: "AI operating agent preview",
+      rows: ["lead qualification agent", "proposal drafting agent", "reporting summary agent", "client intake agent"],
+    },
+  ],
+} as const;
+
+export const benchmarkIntelligence = {
+  eyebrow: "BENCHMARK INTELLIGENCE",
+  headline: "Built to compound",
+  body: "Every Audit contributes to a growing operational benchmark corpus. Over time, Aperture uses this intelligence to identify recurring bottlenecks, workflow patterns and transformation opportunities across modern firms.",
+} as const;
+
+export const faqs = {
+  eyebrow: "FAQ",
+  headline: "Questions before the Audit",
+  items: [
+    {
+      question: "Do I need technical knowledge to use Aperture?",
+      answer: "No. Aperture is designed for operators and founders. The Audit asks practical business questions, not technical implementation questions.",
+    },
+    {
+      question: "Is this consulting or software?",
+      answer: "It starts with diagnosis and moves into implementation. Aperture uses software to deliver operational intelligence, but the value is the method, sequencing and installed systems.",
+    },
+    {
+      question: "Do you implement the systems after the Blueprint?",
+      answer: "Yes. Build is scoped from the Blueprint, then delivered as systems, dashboards, agents, workflows and reporting cadence.",
+    },
+    {
+      question: "How long does the Blueprint take?",
+      answer: "Blueprint turnaround is typically 3 to 4 business days after the Audit inputs are complete.",
+    },
+    {
+      question: "Can Aperture work with our existing tools?",
+      answer: "Usually, yes. Aperture works with existing tools where possible and recommends replacement only when the current stack blocks the operating system.",
+    },
+    {
+      question: "What size business is this for?",
+      answer: "Aperture is best for operationally stretched businesses with real complexity, not teams looking for another standalone dashboard.",
+    },
+  ],
+} as const;
+
 export const practiceAreas = {
   eyebrow: "THE TEN PRACTICE AREAS",
   headline: "Every operational system runs on these ten.",
