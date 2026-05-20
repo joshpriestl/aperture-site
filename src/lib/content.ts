@@ -110,6 +110,88 @@ export const engineMetrics = [
   { label: "Next review", value: "in 14 days" },
 ] as const;
 
+export const whatApertureBuilds = {
+  eyebrow: "BUILD OUTPUTS",
+  headline: "What Aperture Builds",
+  intro:
+    "Blueprint shows what needs to change. Build turns that into operating systems your business can actually use.",
+  subcopy:
+    "Most recommendations fail because they remain abstract. Aperture converts the diagnosis into installed workflows, dashboards, agents and reporting rhythms.",
+  cta: "Start with the free Audit",
+  sections: [
+    {
+      title: "Lead Generation Systems",
+      body: "Capture, qualify, route and follow up with leads automatically, so founder attention goes to the right conversations.",
+      outputs: [
+        "inbound lead capture",
+        "AI qualification summary",
+        "HubSpot or CRM sync",
+        "automated follow-up workflow",
+        "Slack alert to founder/sales team",
+        "pipeline visibility dashboard",
+      ],
+      visualTitle: "Lead flow",
+      flow: ["New enquiry", "AI qualification", "CRM update", "Slack alert", "follow-up sequence"],
+    },
+    {
+      title: "Founder Dashboards",
+      body: "Dashboards that give operators visibility across pipeline, delivery, revenue and operational bottlenecks.",
+      outputs: [
+        "pipeline value",
+        "lead source performance",
+        "proposal conversion",
+        "delivery capacity",
+        "overdue follow-ups",
+        "AI-generated weekly summary",
+      ],
+      visualTitle: "Operator dashboard",
+      metrics: [
+        { label: "Pipeline value", value: "$428k" },
+        { label: "Proposal conversion", value: "38%" },
+        { label: "Delivery capacity", value: "72%" },
+        { label: "Overdue follow-ups", value: "9" },
+      ],
+    },
+    {
+      title: "AI Operational Agents",
+      body: "AI agents embedded into workflows to reduce manual coordination, admin and repeated drafting.",
+      outputs: [
+        "Lead qualification agent",
+        "Proposal drafting agent",
+        "Weekly reporting agent",
+        "Client intake agent",
+        "Internal knowledge retrieval agent",
+      ],
+      visualTitle: "Agent queue",
+      agents: [
+        { label: "Lead qualification agent", status: "running" },
+        { label: "Proposal drafting agent", status: "draft ready" },
+        { label: "Weekly reporting agent", status: "scheduled" },
+        { label: "Client intake agent", status: "in review" },
+        { label: "Knowledge retrieval agent", status: "indexed" },
+      ],
+    },
+    {
+      title: "Reporting and Operating Cadence",
+      body: "Aperture does not just install tools. It creates the operating rhythm around them.",
+      outputs: [
+        "weekly scorecards",
+        "founder summaries",
+        "Slack notifications",
+        "exception alerts",
+        "review cadence",
+      ],
+      visualTitle: "Weekly operations summary",
+      summary: [
+        "Pipeline increased 14% this week.",
+        "Three proposals need founder follow-up.",
+        "Delivery capacity is tight in Strategy.",
+        "Next review: Monday 9:00 AM.",
+      ],
+    },
+  ],
+} as const;
+
 export const practiceAreas = {
   eyebrow: "THE TEN PRACTICE AREAS",
   headline: "Every operational system runs on these ten.",

@@ -1,3 +1,4 @@
+import { Fragment } from "react";
 import { FinalCTA } from "@/components/FinalCTA";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
@@ -9,6 +10,7 @@ import { AuditPanel } from "@/components/stages/AuditPanel";
 import { BlueprintPanel } from "@/components/stages/BlueprintPanel";
 import { BuildPanel } from "@/components/stages/BuildPanel";
 import { EnginePanel } from "@/components/stages/EnginePanel";
+import { WhatApertureBuilds } from "@/components/WhatApertureBuilds";
 import { PanelMap, stages } from "@/lib/content";
 
 const panels: PanelMap = {
@@ -25,9 +27,10 @@ export default function Home() {
       <main>
         <Hero />
         {stages.map((stage) => (
-          <Stage key={stage.key} stage={stage}>
-            {panels[stage.key]}
-          </Stage>
+          <Fragment key={stage.key}>
+            <Stage stage={stage}>{panels[stage.key]}</Stage>
+            {stage.key === "build" ? <WhatApertureBuilds /> : null}
+          </Fragment>
         ))}
         <PracticeAreas />
         <Methodology />
