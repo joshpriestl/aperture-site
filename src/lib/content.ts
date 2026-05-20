@@ -18,18 +18,31 @@ export type Stage = {
 };
 
 export const navLinks = [
-  { label: "Methodology", href: "#methodology" },
-  { label: "Practice Areas", href: "#practice-areas" },
-  { label: "About", href: "#the-founder" },
+  { label: "What we do", href: "#what-we-do" },
+  { label: "Builds", href: "#what-aperture-builds" },
+  { label: "Who we are", href: "#who-we-are" },
+  { label: "Contact", href: "#contact" },
 ] as const;
 
 export const hero = {
   eyebrow: "APERTURE",
-  headline: "Diagnose what's leaking. Build what's missing.",
+  headline: "Operational diagnostics and systems for modern firms.",
   subhead:
-    "An operations firm for scaling consultancies, agencies, advisory firms and hospitality groups. The free Audit takes 15 minutes. You leave with a defensible operational score, a quantified cost of inaction and three priority interventions.",
-  cta: "Take the free Audit — 15 minutes",
+    "Identify bottlenecks. Generate a sequenced plan. Install the workflows, reporting and operational infrastructure required to scale clearly.",
+  cta: "Start the Audit",
 };
+
+export const whatWeDo = {
+  eyebrow: "WHAT WE DO",
+  headline: "From operational noise to installed systems.",
+  body: "Aperture gives scaling firms a clear sequence: diagnose the drag, plan the fix, install the operating layer, then keep improving it.",
+  steps: [
+    { name: "AUDIT", body: "Find operational bottlenecks" },
+    { name: "BLUEPRINT", body: "Generate a sequenced transformation plan" },
+    { name: "BUILD", body: "Install systems and workflows" },
+    { name: "ENGINE", body: "Monitor and optimise continuously" },
+  ],
+} as const;
 
 export const stages: Stage[] = [
   {
@@ -130,83 +143,70 @@ export const whatApertureBuilds = {
   headline: "What Aperture Builds",
   intro:
     "Blueprint shows what needs to change. Build turns that into operating systems your business can actually use.",
-  subcopy:
-    "Most recommendations fail because they remain abstract. Aperture converts the diagnosis into installed workflows, dashboards, agents and reporting rhythms.",
-  cta: "Start with the free Audit",
+  cta: "Start the Audit",
   sections: [
     {
-      shortLabel: "Lead Gen",
-      title: "Lead Generation Systems",
-      body: "Capture, qualify, route and follow up with leads automatically, so founder attention goes to the right conversations.",
-      outputs: [
-        "inbound lead capture",
-        "AI qualification summary",
-        "HubSpot or CRM sync",
-        "automated follow-up workflow",
-        "Slack alert to founder/sales team",
-        "pipeline visibility dashboard",
-      ],
-      visualTitle: "Lead flow",
-      flow: ["New enquiry", "AI qualification", "CRM update", "Slack alert", "follow-up sequence"],
+      title: "Lead systems",
+      body: "Capture, qualify, route and follow up with inbound demand without leaving ownership unclear.",
+      visual: ["New lead", "Qualified", "CRM synced", "Follow-up queued"],
     },
     {
-      shortLabel: "Dashboards",
-      title: "Founder Dashboards",
-      body: "Dashboards that give operators visibility across pipeline, delivery, revenue and operational bottlenecks.",
-      outputs: [
-        "pipeline value",
-        "lead source performance",
-        "proposal conversion",
-        "delivery capacity",
-        "overdue follow-ups",
-        "AI-generated weekly summary",
-      ],
-      visualTitle: "Operator dashboard",
-      metrics: [
-        { label: "Pipeline value", value: "$428k" },
-        { label: "Proposal conversion", value: "38%" },
-        { label: "Delivery capacity", value: "72%" },
-        { label: "Overdue follow-ups", value: "9" },
-      ],
+      title: "Founder dashboards",
+      body: "Create a small operating view across pipeline, proposals, delivery capacity and overdue action.",
+      visual: ["Pipeline visible", "Follow-ups flagged", "Capacity reviewed"],
     },
     {
-      shortLabel: "AI Agents",
-      title: "AI Operational Agents",
-      body: "AI agents embedded into workflows to reduce manual coordination, admin and repeated drafting.",
-      outputs: [
-        "Lead qualification agent",
-        "Proposal drafting agent",
-        "Weekly reporting agent",
-        "Client intake agent",
-        "Internal knowledge retrieval agent",
-      ],
-      visualTitle: "Agent queue",
-      agents: [
-        { label: "Lead qualification agent", status: "running" },
-        { label: "Proposal drafting agent", status: "draft ready" },
-        { label: "Weekly reporting agent", status: "scheduled" },
-        { label: "Client intake agent", status: "in review" },
-        { label: "Knowledge retrieval agent", status: "indexed" },
-      ],
+      title: "AI workflows",
+      body: "Embed AI into practical handoffs: intake, qualification, proposal drafts and weekly reporting.",
+      visual: ["Intake captured", "Draft prepared", "Human review"],
     },
     {
-      shortLabel: "Cadence",
-      title: "Reporting and Operating Cadence",
-      body: "Aperture does not just install tools. It creates the operating rhythm around them.",
-      outputs: [
-        "weekly scorecards",
-        "founder summaries",
-        "Slack notifications",
-        "exception alerts",
-        "review cadence",
-      ],
-      visualTitle: "Weekly operations summary",
-      summary: [
-        "Pipeline increased 14% this week.",
-        "Three proposals need founder follow-up.",
-        "Delivery capacity is tight in Strategy.",
-        "Next review: Monday 9:00 AM.",
-      ],
+      title: "Reporting cadence",
+      body: "Turn operating data into weekly summaries, exception alerts and a review rhythm people follow.",
+      visual: ["Scorecard sent", "Exceptions noted", "Review scheduled"],
+    },
+  ],
+} as const;
+
+export const whoWeAre = {
+  eyebrow: "WHO WE ARE",
+  headline: "Most firms do not have a people problem.",
+  body: [
+    "They have an operational visibility problem.",
+    "AI amplifies this. It does not solve it automatically.",
+    "Aperture exists to diagnose operational bottlenecks and install the systems required to reduce friction, improve visibility and increase execution clarity.",
+  ],
+} as const;
+
+export const operatingSignals = {
+  eyebrow: "OPERATIONAL SIGNALS",
+  headline: "Signals we typically find",
+  body: "The Audit gives the problem structure. These are the patterns that usually appear before the score makes them visible.",
+  items: [
+    "Follow-up relies on memory",
+    "Reporting arrives too late",
+    "No operational scorecard",
+    "The founder is the reporting layer",
+    "AI tools exist but workflows do not",
+  ],
+} as const;
+
+export const caseStudies = {
+  eyebrow: "TESTIMONIALS / CASE STUDIES",
+  headline: "Built for practical operational change",
+  body: "Aperture is early. We will publish named client stories only when they can be shared properly. Until then, the work is deliberately grounded in the transformations the system is designed to produce.",
+  items: [
+    {
+      title: "From scattered follow-up to owned pipeline",
+      body: "Lead capture, routing, CRM ownership and weekly review cadence installed around the founder.",
+    },
+    {
+      title: "From manual reporting to operating rhythm",
+      body: "A compact scorecard and exception process that makes decisions visible before they become urgent.",
+    },
+    {
+      title: "From ad hoc AI tools to workflow support",
+      body: "AI placed inside intake, proposal and reporting workflows with human review where it matters.",
     },
   ],
 } as const;
@@ -222,18 +222,6 @@ export const buyerFit = {
     "Agencies and creative studios",
     "Property and hospitality operators",
     "Founder-led service businesses past the early days",
-  ],
-} as const;
-
-export const operatingSignals = {
-  eyebrow: "OPERATIONAL SIGNALS",
-  headline: "Signals we usually find before the score confirms it",
-  body: "The Audit gives the problem structure. These are the patterns that usually appear before the score makes them visible.",
-  items: [
-    "The founder is still the reporting layer",
-    "Pipeline visibility lives across spreadsheets",
-    "AI tools exist but workflows do not",
-    "No one owns the operating rhythm",
   ],
 } as const;
 
@@ -290,11 +278,13 @@ export const methodology = {
 };
 
 export const finalCta = {
-  headline: "Begin where every transformation begins.",
-  body: "The Audit is free. 49 questions. 15 minutes. A defensible operational score and a real estimate of what your inefficiencies cost.",
-  cta: "Take the free Audit",
+  eyebrow: "CONTACT",
+  headline: "Start with the Audit.",
+  body: "The Audit is free. 49 questions. 15 minutes. A defensible operational score and a clear view of what to fix first.",
+  cta: "Start the Audit",
+  email: "jjppriestley@gmail.com",
 };
 
-export const footerItems = ["© APERTURE 2026", "SELBORNE KING IMPRINT", "APTR.AU"] as const;
+export const footerItems = ["(C) APERTURE 2026", "SELBORNE KING IMPRINT", "APTR.AU"] as const;
 
 export type PanelMap = Record<StageKey, ReactNode>;
