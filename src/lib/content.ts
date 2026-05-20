@@ -120,6 +120,7 @@ export const whatApertureBuilds = {
   cta: "Start with the free Audit",
   sections: [
     {
+      shortLabel: "Lead Gen",
       title: "Lead Generation Systems",
       body: "Capture, qualify, route and follow up with leads automatically, so founder attention goes to the right conversations.",
       outputs: [
@@ -134,6 +135,7 @@ export const whatApertureBuilds = {
       flow: ["New enquiry", "AI qualification", "CRM update", "Slack alert", "follow-up sequence"],
     },
     {
+      shortLabel: "Dashboards",
       title: "Founder Dashboards",
       body: "Dashboards that give operators visibility across pipeline, delivery, revenue and operational bottlenecks.",
       outputs: [
@@ -153,6 +155,7 @@ export const whatApertureBuilds = {
       ],
     },
     {
+      shortLabel: "AI Agents",
       title: "AI Operational Agents",
       body: "AI agents embedded into workflows to reduce manual coordination, admin and repeated drafting.",
       outputs: [
@@ -172,6 +175,7 @@ export const whatApertureBuilds = {
       ],
     },
     {
+      shortLabel: "Cadence",
       title: "Reporting and Operating Cadence",
       body: "Aperture does not just install tools. It creates the operating rhythm around them.",
       outputs: [
