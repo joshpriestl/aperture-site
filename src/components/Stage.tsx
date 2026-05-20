@@ -42,6 +42,23 @@ export function Stage({ stage, children }: StageProps) {
           {stage.headline}
         </h2>
         <p className="mt-7 max-w-[520px] text-[16px] leading-7 text-ink-soft">{stage.body}</p>
+        {stage.deliverables && (
+          <div className="mt-8 rounded-[12px] border border-hairline p-5">
+            <p className="font-mono text-[10px] font-medium uppercase tracking-[0.24em] text-ink-muted">
+              {stage.deliverables.eyebrow}
+            </p>
+            <div className="mt-3 divide-y divide-hairline">
+              {stage.deliverables.items.map((item) => (
+                <p key={item} className="py-3 text-[13px] leading-6 text-ink-soft">
+                  {item}
+                </p>
+              ))}
+            </div>
+            <p className="mt-5 font-display text-[15px] italic leading-[1.4] tracking-[-0.01em] text-ink">
+              {stage.deliverables.closing}
+            </p>
+          </div>
+        )}
       </div>
       <div className="h-px w-20 bg-hairline" />
     </article>

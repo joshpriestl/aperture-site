@@ -10,21 +10,25 @@ export type Stage = {
   headline: string;
   body: string;
   visualSide: "left" | "right";
+  deliverables?: {
+    eyebrow: string;
+    items: string[];
+    closing: string;
+  };
 };
 
 export const navLinks = [
-  { label: "Methodology", href: "#" },
-  { label: "Practice Areas", href: "#" },
-  { label: "Journal", href: "#" },
-  { label: "About", href: "#" },
+  { label: "Methodology", href: "#methodology" },
+  { label: "Practice Areas", href: "#practice-areas" },
+  { label: "About", href: "#the-founder" },
 ] as const;
 
 export const hero = {
   eyebrow: "APERTURE",
-  headline: "Diagnose what your operations don't say out loud.",
+  headline: "Diagnose what's leaking. Build what's missing.",
   subhead:
-    "An operational intelligence platform for professional service firms. Free 49-question diagnostic across ten core practice areas. Maturity scoring. Quantified cost of inaction.",
-  cta: "Take the free Audit",
+    "An operations firm for scaling consultancies, agencies, advisory firms and hospitality groups. The free Audit takes 15 minutes. You leave with a defensible operational score, a quantified cost of inaction and three priority interventions.",
+  cta: "Take the free Audit — 15 minutes",
 };
 
 export const stages: Stage[] = [
@@ -36,6 +40,17 @@ export const stages: Stage[] = [
     headline: "We map where your operations leak.",
     body: "A 49-question diagnostic across ten core practice areas. Maturity scoring, quantified cost of inaction, prioritised recommendations. Free.",
     visualSide: "left",
+    deliverables: {
+      eyebrow: "WHAT YOU RECEIVE",
+      items: [
+        "Aperture Score across all ten practice areas",
+        "Cost of Inaction range, derived from your own financial inputs",
+        "Three Priority Levers with the specific findings that fired",
+        "Persistent on-screen report at a unique URL",
+        "Same-day email delivery",
+      ],
+      closing: "Fifteen minutes. Forty-nine questions. Always free.",
+    },
   },
   {
     key: "blueprint",
@@ -43,7 +58,7 @@ export const stages: Stage[] = [
     name: "Blueprint",
     chip: "Step 02 - Blueprint",
     headline: "A roadmap for what to fix first.",
-    body: "Founder pricing $199. Strategic recommendations, implementation sequencing, automation opportunities, AI-native workflow design. Generated from your Audit.",
+    body: "Founder pricing $199. Strategic recommendations, implementation sequencing, automation opportunities, automated workflow design. Generated from your Audit.",
     visualSide: "right",
   },
   {
@@ -104,10 +119,10 @@ export const buildItems = [
 ] as const;
 
 export const engineMetrics = [
-  { label: "Operational maturity", value: "+12 vs. industry" },
-  { label: "Pipeline velocity", value: "+24% vs. last quarter" },
-  { label: "Inefficiency exposure", value: "-$184k recovered" },
-  { label: "Next review", value: "in 14 days" },
+  { label: "Operational maturity", value: "Benchmarked" },
+  { label: "Pipeline velocity", value: "Quarter on quarter" },
+  { label: "Inefficiency exposure", value: "Quantified" },
+  { label: "Review cadence", value: "Recurring" },
 ] as const;
 
 export const whatApertureBuilds = {
@@ -199,17 +214,14 @@ export const whatApertureBuilds = {
 export const buyerFit = {
   eyebrow: "WHO THIS IS FOR",
   headline: "Built for operationally stretched firms",
-  body: "Aperture is built for businesses where growth has created operational drag: more leads, more delivery, more tools, more reporting, and too much still sitting in the founder's head.",
+  body: "Aperture is built for scaling service businesses where growth has created operational drag. More leads, more delivery, more tools, more reporting and too much still sitting in the founder's head.",
   notFor:
-    "Not built for teams looking for another dashboard. Built for operators who need diagnosis, systems and execution.",
+    "Built for operators who need diagnosis, systems and execution. Not built for teams looking for another dashboard.",
   examples: [
-    "professional services firms",
-    "agencies",
-    "advisory businesses",
-    "property groups",
-    "accounting and finance firms",
-    "founder-led SMEs",
-    "growing teams with operational complexity",
+    "Consultancies and advisory firms",
+    "Agencies and creative studios",
+    "Property and hospitality operators",
+    "Founder-led service businesses past the early days",
   ],
 } as const;
 
@@ -219,57 +231,9 @@ export const operatingSignals = {
   body: "The Audit gives the problem structure. These are the patterns that usually appear before the score makes them visible.",
   items: [
     "The founder is still the reporting layer",
-    "Follow-up relies on memory",
     "Pipeline visibility lives across spreadsheets",
-    "Proposals are rebuilt manually",
     "AI tools exist but workflows do not",
-    "Reports arrive too late to change decisions",
-    "Customer data is duplicated across systems",
     "No one owns the operating rhythm",
-  ],
-} as const;
-
-export const auditJourney = {
-  eyebrow: "AFTER THE AUDIT",
-  headline: "What happens after the Audit",
-  body: "The free diagnostic creates the first read. From there, Aperture moves from score to sequence, then from sequence to installed systems.",
-  steps: [
-    {
-      label: "Audit",
-      detail: "diagnosis and Aperture Score",
-    },
-    {
-      label: "Blueprint",
-      detail: "deeper assessment and sequenced plan",
-    },
-    {
-      label: "Build",
-      detail: "systems, dashboards, agents and workflows installed",
-    },
-    {
-      label: "Engine",
-      detail: "ongoing operating cadence and optimisation",
-    },
-  ],
-} as const;
-
-export const exampleOutputs = {
-  eyebrow: "OUTPUT PREVIEW",
-  headline: "Example outputs",
-  body: "The work is practical by design. Aperture turns the assessment into artefacts an operator can review, approve and run.",
-  cards: [
-    {
-      title: "Blueprint page preview",
-      rows: ["priority areas", "cost of inaction", "recommended sequence", "Build proposal placeholder"],
-    },
-    {
-      title: "Founder dashboard preview",
-      rows: ["pipeline value", "overdue follow-ups", "proposal conversion", "AI weekly summary"],
-    },
-    {
-      title: "AI operating agent preview",
-      rows: ["lead qualification agent", "proposal drafting agent", "reporting summary agent", "client intake agent"],
-    },
   ],
 } as const;
 
@@ -284,28 +248,19 @@ export const faqs = {
   headline: "Questions before the Audit",
   items: [
     {
-      question: "Do I need technical knowledge to use Aperture?",
-      answer: "No. Aperture is designed for operators and founders. The Audit asks practical business questions, not technical implementation questions.",
-    },
-    {
       question: "Is this consulting or software?",
-      answer: "It starts with diagnosis and moves into implementation. Aperture uses software to deliver operational intelligence, but the value is the method, sequencing and installed systems.",
+      answer:
+        "It starts with diagnosis and moves into implementation. Aperture uses software to deliver operational intelligence, but the value is the method, sequencing and installed systems.",
     },
     {
       question: "Do you implement the systems after the Blueprint?",
-      answer: "Yes. Build is scoped from the Blueprint, then delivered as systems, dashboards, agents, workflows and reporting cadence.",
-    },
-    {
-      question: "How long does the Blueprint take?",
-      answer: "Blueprint turnaround is typically 3 to 4 business days after the Audit inputs are complete.",
+      answer:
+        "Yes. Build is scoped from the Blueprint, then delivered as systems, dashboards, agents, workflows and reporting cadence.",
     },
     {
       question: "Can Aperture work with our existing tools?",
-      answer: "Usually, yes. Aperture works with existing tools where possible and recommends replacement only when the current stack blocks the operating system.",
-    },
-    {
-      question: "What size business is this for?",
-      answer: "Aperture is best for operationally stretched businesses with real complexity, not teams looking for another standalone dashboard.",
+      answer:
+        "Usually, yes. Aperture works with existing tools where possible and recommends replacement only when the current stack blocks the operating system.",
     },
   ],
 } as const;
@@ -329,9 +284,9 @@ export const practiceAreas = {
 };
 
 export const methodology = {
-  quote:
-    '"In an age where AI commoditises code, the durable asset is methodology - diagnostic sequencing, scoring logic, and a benchmark corpus that compounds with every completed Audit."',
-  citation: "CORE THESIS - APERTURE",
+  eyebrow: "WHAT THE AUDIT ACTUALLY SCORES",
+  body: "Pipeline visibility. Reporting cadence. Decision latency. AI maturity. Operating rhythm. Cost of inaction. Each of the ten practice areas is scored against a benchmark of scaling firms, then sequenced into the three changes that will move the needle fastest.",
+  closing: "Score is the start. Sequence is the plan. Systems are the outcome.",
 };
 
 export const finalCta = {
@@ -340,6 +295,6 @@ export const finalCta = {
   cta: "Take the free Audit",
 };
 
-export const footerItems = ["\u00a9 APERTURE 2026", "SELBORNE KING IMPRINT", "APTR.AU"] as const;
+export const footerItems = ["© APERTURE 2026", "SELBORNE KING IMPRINT", "APTR.AU"] as const;
 
 export type PanelMap = Record<StageKey, ReactNode>;

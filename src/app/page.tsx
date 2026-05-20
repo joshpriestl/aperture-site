@@ -1,10 +1,9 @@
-import { AuditJourney } from "@/components/AuditJourney";
 import { BenchmarkIntelligence } from "@/components/BenchmarkIntelligence";
 import { BuyerFit } from "@/components/BuyerFit";
-import { ExampleOutputs } from "@/components/ExampleOutputs";
 import { FAQ } from "@/components/FAQ";
 import { FinalCTA } from "@/components/FinalCTA";
 import { Footer } from "@/components/Footer";
+import { Founder } from "@/components/Founder";
 import { Hero } from "@/components/Hero";
 import { Methodology } from "@/components/Methodology";
 import { Nav } from "@/components/Nav";
@@ -33,14 +32,13 @@ export default function Home() {
         <Hero />
         <BuyerFit />
         <OperatingSignals />
+        <Founder />
         {stages.map((stage) => (
           <Stage key={stage.key} stage={stage}>
             {panels[stage.key]}
           </Stage>
         ))}
-        <AuditJourney />
         <WhatApertureBuilds />
-        <ExampleOutputs />
         <BenchmarkIntelligence />
         <PracticeAreas />
         <Methodology />

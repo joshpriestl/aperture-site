@@ -2,7 +2,7 @@ import { practiceAreas } from "@/lib/content";
 
 export function PracticeAreas() {
   return (
-    <section className="px-5 py-16 sm:px-8 sm:py-24">
+    <section id="practice-areas" className="px-5 py-16 sm:px-8 sm:py-24">
       <div className="mx-auto grid max-w-site gap-12 lg:grid-cols-[0.82fr_1.18fr] lg:gap-20">
         <div>
           <p className="font-mono text-[11px] font-medium uppercase tracking-[0.24em] text-ink-muted">

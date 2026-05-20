@@ -4,7 +4,7 @@ import "./globals.css";
 export const metadata: Metadata = {
   title: "Aperture - Operational Intelligence",
   description:
-    "Aperture is an AI-native operational intelligence platform for professional service firms.",
+    "Aperture is a productized operations firm for scaling consultancies, agencies, advisory firms and hospitality groups. Free diagnostic Audit. Strategic Blueprint. Done-for-you implementation.",
 };
 
 export default function RootLayout({
