@@ -15,6 +15,7 @@ import { BlueprintPanel } from "@/components/stages/BlueprintPanel";
 import { BuildPanel } from "@/components/stages/BuildPanel";
 import { EnginePanel } from "@/components/stages/EnginePanel";
 import { WhatApertureBuilds } from "@/components/WhatApertureBuilds";
+import { WhatWeDo } from "@/components/WhatWeDo";
 import { PanelMap, stages } from "@/lib/content";
 
 const panels: PanelMap = {
@@ -30,18 +31,20 @@ export default function Home() {
       <Nav />
       <main>
         <Hero />
-        <BuyerFit />
-        <OperatingSignals />
-        <Founder />
-        {stages.map((stage) => (
-          <Stage key={stage.key} stage={stage}>
-            {panels[stage.key]}
-          </Stage>
-        ))}
+        <WhatWeDo>
+          {stages.map((stage) => (
+            <Stage key={stage.key} stage={stage}>
+              {panels[stage.key]}
+            </Stage>
+          ))}
+        </WhatWeDo>
         <WhatApertureBuilds />
         <BenchmarkIntelligence />
         <PracticeAreas />
         <Methodology />
+        <BuyerFit />
+        <OperatingSignals />
+        <Founder />
         <FAQ />
         <FinalCTA />
       </main>
