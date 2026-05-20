@@ -1,5 +1,6 @@
 import { BenchmarkIntelligence } from "@/components/BenchmarkIntelligence";
 import { BuyerFit } from "@/components/BuyerFit";
+import { ExampleOutputs } from "@/components/ExampleOutputs";
 import { FAQ } from "@/components/FAQ";
 import { FinalCTA } from "@/components/FinalCTA";
 import { Footer } from "@/components/Footer";
@@ -39,6 +40,7 @@ export default function Home() {
           ))}
         </WhatWeDo>
         <WhatApertureBuilds />
+        <ExampleOutputs />
         <BenchmarkIntelligence />
         <PracticeAreas />
         <Methodology />
