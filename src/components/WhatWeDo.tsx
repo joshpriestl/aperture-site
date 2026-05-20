@@ -1,59 +1,23 @@
-"use client";
-
-import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
-import { AuditMockup, BlueprintMockup, BuildMockup, EngineMockup } from "@/components/tier-mockups";
-import { stages, type StageKey } from "@/lib/content";
-
-const moduleCopy: Record<
-  StageKey,
+const modules = [
   {
-    descriptor: string;
-    systemLabel: string;
-    flow: string[];
-    detail: string;
-  }
-> = {
-  audit: {
-    descriptor: "Operational diagnosis and scoring",
-    systemLabel: "Diagnostic layer",
-    flow: ["Diagnostic flow", "Practice scoring", "Weakest levers", "Cost range"],
-    detail:
-      "The Audit turns scattered operational symptoms into scored practice areas, priority levers and a cost of inaction estimate.",
+    title: "AUDIT",
+    body: "Find operational bottlenecks",
   },
-  blueprint: {
-    descriptor: "Sequenced transformation planning",
-    systemLabel: "Planning layer",
-    flow: ["Deeper assessment", "Prioritisation", "Roadmap", "Founder review"],
-    detail:
-      "Blueprint goes deeper on the weakest areas and converts the diagnosis into a sequenced implementation roadmap.",
+  {
+    title: "BLUEPRINT",
+    body: "Generate a sequenced plan",
   },
-  build: {
-    descriptor: "Workflow and systems installation",
-    systemLabel: "Installation layer",
-    flow: ["CRM workflows", "AI agents", "Dashboards", "Cadence live"],
-    detail:
-      "Build installs the operational infrastructure: routing, agents, dashboards, reporting cadence and alerts.",
+  {
+    title: "BUILD",
+    body: "Install systems and workflows",
   },
-  engine: {
-    descriptor: "Ongoing operational optimisation",
-    systemLabel: "Operating layer",
-    flow: ["Monitoring", "Alerts", "Optimisation", "Reporting rhythm"],
-    detail:
-      "Engine keeps the operating system alive, monitoring for drift and moving improvements into recurring cadence.",
+  {
+    title: "ENGINE",
+    body: "Monitor and optimise continuously",
   },
-};
-
-const mockups: Record<StageKey, JSX.Element> = {
-  audit: <AuditMockup />,
-  blueprint: <BlueprintMockup />,
-  build: <BuildMockup />,
-  engine: <EngineMockup />,
-};
+] as const;
 
 export function WhatWeDo() {
-  const [activeKey, setActiveKey] = useState<StageKey | null>(null);
-
   return (
     <section id="what-we-do" className="px-5 py-16 sm:px-8 sm:py-24">
       <div className="mx-auto max-w-site">
@@ -65,99 +29,27 @@ export function WhatWeDo() {
             Audit, sequence, build and operate.
           </h2>
           <p className="mx-auto mt-7 max-w-[560px] text-[16px] leading-7 text-ink-soft">
-            Four layers of an operating system. Compact by default, deeper when opened.
+            Aperture moves from diagnosis to installed operating rhythm in four clear stages.
           </p>
         </div>
 
-        <div className="mx-auto mt-12 max-w-[1080px] space-y-4">
-          {stages.map((stage) => {
-            const isActive = activeKey === stage.key;
-            const isDimmed = activeKey !== null && !isActive;
-
-            return (
-              <motion.article
-                key={stage.key}
-                layout
-                className={`overflow-hidden rounded-[34px] bg-card text-ink shadow-[10px_10px_30px_rgba(20,24,28,0.08),-10px_-10px_30px_rgba(255,255,255,0.72)] transition-opacity duration-200 ${
-                  isDimmed ? "opacity-45" : "opacity-100"
-                }`}
-                transition={{ layout: { type: "spring", stiffness: 170, damping: 24 } }}
-              >
-                <button
-                  type="button"
-                  onClick={() => setActiveKey(isActive ? null : stage.key)}
-                  className="group flex min-h-[112px] w-full cursor-pointer items-center justify-between gap-5 px-5 py-5 text-left sm:px-8"
-                  aria-expanded={isActive}
-                >
-                  <div className="min-w-0">
-                    <p className="font-mono text-[12px] font-medium uppercase tracking-[0.22em] text-ink">
-                      {stage.name.toUpperCase()}
-                    </p>
-                    <p className="mt-3 font-display text-[clamp(24px,2.8vw,36px)] font-normal leading-tight tracking-[-0.02em] text-ink">
-                      {moduleCopy[stage.key].descriptor}
-                    </p>
-                  </div>
-                  <motion.span
-                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-ink font-display text-[30px] leading-none text-card shadow-[0_10px_24px_rgba(20,24,28,0.12)]"
-                    animate={{ rotate: isActive ? 45 : 0 }}
-                    transition={{ type: "spring", stiffness: 220, damping: 20 }}
-                    aria-hidden="true"
-                  >
-                    +
-                  </motion.span>
-                </button>
-
-                <AnimatePresence initial={false}>
-                  {isActive ? (
-                    <motion.div
-                      key={`${stage.key}-expanded`}
-                      initial={{ height: 0, opacity: 0 }}
-                      animate={{ height: "auto", opacity: 1 }}
-                      exit={{ height: 0, opacity: 0 }}
-                      transition={{ duration: 0.35, ease: [0.22, 1, 0.36, 1] }}
-                    >
-                      <div className="px-5 pb-5 sm:px-8 sm:pb-8">
-                        <div className="grid gap-8 border-t border-hairline pt-6 lg:grid-cols-[0.38fr_0.62fr] lg:items-center">
-                          <div>
-                            <p className="font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-ink-muted">
-                              {moduleCopy[stage.key].systemLabel}
-                            </p>
-                            <h3 className="mt-5 font-display text-[clamp(30px,3.4vw,48px)] font-normal leading-[1.05] tracking-[-0.022em] text-ink">
-                              {stage.headline}
-                            </h3>
-                            <p className="mt-5 text-[16px] leading-7 text-ink-soft">{moduleCopy[stage.key].detail}</p>
-                            <div className="mt-7 grid gap-2">
-                              {moduleCopy[stage.key].flow.map((step, index) => (
-                                <motion.div
-                                  key={step}
-                                  className="flex items-center gap-3 rounded-[14px] bg-card p-3 shadow-[inset_0_0_0_1px_var(--hairline)]"
-                                  initial={{ opacity: 0, x: 10 }}
-                                  animate={{ opacity: 1, x: 0 }}
-                                  transition={{ duration: 0.25, delay: index * 0.06 }}
-                                >
-                                  <span className="flex h-7 w-7 items-center justify-center rounded-full bg-surface font-mono text-[10px] text-ink-muted ring-1 ring-hairline">
-                                    {String(index + 1).padStart(2, "0")}
-                                  </span>
-                                  <span className="text-[13px] text-ink">{step}</span>
-                                </motion.div>
-                              ))}
-                            </div>
-                          </div>
-                          <motion.div
-                            initial={{ opacity: 0, y: 14 }}
-                            animate={{ opacity: 1, y: 0 }}
-                            transition={{ duration: 0.35, delay: 0.08 }}
-                          >
-                            {mockups[stage.key]}
-                          </motion.div>
-                        </div>
-                      </div>
-                    </motion.div>
-                  ) : null}
-                </AnimatePresence>
-              </motion.article>
-            );
-          })}
+        <div className="relative mx-auto mt-12 grid max-w-[1080px] gap-4 lg:grid-cols-4">
+          <div className="absolute left-[12.5%] right-[12.5%] top-1/2 hidden h-px bg-hairline lg:block" />
+          {modules.map((module, index) => (
+            <article
+              key={module.title}
+              className="relative rounded-[28px] bg-card p-7 text-ink shadow-[0_18px_48px_rgba(20,24,28,0.06)] ring-1 ring-hairline transition-transform duration-150 hover:-translate-y-1"
+            >
+              <p className="font-mono text-[12px] font-medium uppercase tracking-[0.22em] text-ink">{module.title}</p>
+              <p className="mt-8 min-h-[72px] font-display text-[clamp(25px,2.4vw,34px)] font-normal leading-[1.08] tracking-[-0.02em] text-ink">
+                {module.body}
+              </p>
+              <div className="mt-8 flex items-center justify-between gap-4">
+                <span className="font-mono text-[11px] text-ink-muted">0{index + 1}</span>
+                <span className="h-2 w-2 rounded-full bg-ink" />
+              </div>
+            </article>
+          ))}
         </div>
       </div>
     </section>

@@ -1,28 +1,30 @@
-"use client";
-
-import { useState } from "react";
 import Link from "next/link";
-import { AgentWorkflowMockup, FounderDashboardMockup, LeadSystemMockup } from "@/components/product-mockups";
 import { whatApertureBuilds } from "@/lib/content";
 
-const chipTone = [
-  "bg-[var(--audit-chip-bg)] text-[var(--audit-chip-tx)]",
-  "bg-[var(--bp-chip-bg)] text-[var(--bp-chip-tx)]",
-  "bg-[var(--bd-chip-bg)] text-[var(--bd-chip-tx)]",
-  "bg-[var(--en-chip-bg)] text-[var(--en-chip-tx)]",
-];
-
-function ActiveVisual({ index }: { index: number }) {
-  if (index === 0) return <LeadSystemMockup />;
-  if (index === 1) return <FounderDashboardMockup />;
-  if (index === 2) return <AgentWorkflowMockup />;
-  return <FounderDashboardMockup />;
-}
+const examples = [
+  {
+    title: "Lead routing workflow",
+    body: "New lead, qualification, CRM update, Slack alert and follow-up sequence.",
+    status: "Live route",
+  },
+  {
+    title: "Founder operating view",
+    body: "Pipeline, follow-ups, proposal cadence and weekly operating summary.",
+    status: "Review ready",
+  },
+  {
+    title: "AI intake agent",
+    body: "Client context captured, summarised and routed before handoff.",
+    status: "In workflow",
+  },
+  {
+    title: "Weekly operating summary",
+    body: "Alerts, actions, review queue and next cadence in one note.",
+    status: "Delivered",
+  },
+] as const;
 
 export function WhatApertureBuilds() {
-  const [activeIndex, setActiveIndex] = useState(0);
-  const active = whatApertureBuilds.sections[activeIndex];
-
   return (
     <section className="px-5 py-16 sm:px-8 sm:py-24" aria-labelledby="what-aperture-builds">
       <div className="mx-auto max-w-site border-y border-hairline py-14 sm:py-20">
@@ -41,47 +43,30 @@ export function WhatApertureBuilds() {
           </p>
         </div>
 
-        <div className="mt-10 flex flex-wrap justify-center gap-2">
-          {whatApertureBuilds.sections.map((section, index) => (
-            <button
-              key={section.title}
-              type="button"
-              onClick={() => setActiveIndex(index)}
-              className={`cursor-pointer rounded-md px-4 py-3 font-mono text-[10px] font-medium uppercase tracking-[0.14em] transition-colors duration-150 ${
-                activeIndex === index
-                  ? "bg-card text-ink shadow-[0_10px_26px_rgba(20,24,28,0.08)] ring-1 ring-hairline"
-                  : "text-ink-muted hover:bg-surface hover:text-ink"
-              }`}
-              aria-pressed={activeIndex === index}
+        <div className="mt-10 grid gap-5 md:grid-cols-2 xl:grid-cols-4">
+          {examples.map((example) => (
+            <article
+              key={example.title}
+              className="rounded-[20px] bg-card p-6 ring-1 ring-hairline transition-transform duration-150 hover:-translate-y-1"
             >
-              {section.shortLabel}
-            </button>
-          ))}
-        </div>
-
-        <div className="mt-7 grid gap-8 rounded-[22px] bg-card p-5 shadow-panel ring-1 ring-hairline transition-transform duration-150 hover:-translate-y-1 sm:p-8 lg:grid-cols-[0.38fr_0.62fr] lg:items-center">
-          <div className="flex min-h-[260px] flex-col justify-between">
-            <div>
-              <p className={`w-fit rounded-md px-3 py-2 font-mono text-[12px] font-medium tracking-[0.12em] ${chipTone[activeIndex]}`}>
-                {active.shortLabel}
-              </p>
-              <h3 className="mt-8 max-w-[420px] font-display text-[clamp(30px,3.2vw,48px)] font-normal leading-[1.05] tracking-[-0.022em] text-ink">
-                {active.title}
+              <div className="flex items-center justify-between gap-4">
+                <p className="font-mono text-[10px] uppercase tracking-[0.14em] text-ink-muted">{example.status}</p>
+                <span className="h-2 w-2 rounded-full bg-ink" />
+              </div>
+              <h3 className="mt-8 font-display text-[28px] font-normal leading-tight tracking-[-0.02em] text-ink">
+                {example.title}
               </h3>
-            </div>
-            <p className="mt-8 max-w-[420px] text-[15px] leading-7 text-ink-soft">{active.body}</p>
-          </div>
-          <ActiveVisual index={activeIndex} />
-        </div>
-
-        <div className="mx-auto mt-8 grid max-w-[860px] gap-3 sm:grid-cols-2 lg:grid-cols-3">
-          {active.outputs.map((output) => (
-            <div
-              key={output}
-              className="rounded-[12px] bg-card px-4 py-3 font-mono text-[10px] uppercase tracking-[0.12em] text-ink-muted ring-1 ring-hairline"
-            >
-              {output}
-            </div>
+              <p className="mt-4 text-[14px] leading-6 text-ink-soft">{example.body}</p>
+              <div className="mt-7 rounded-[12px] bg-surface p-3 ring-1 ring-hairline">
+                <div className="flex items-center gap-2">
+                  <span className="h-2 w-2 rounded-full bg-ink" />
+                  <span className="h-px flex-1 bg-hairline" />
+                  <span className="h-2 w-2 rounded-full bg-ink" />
+                  <span className="h-px flex-1 bg-hairline" />
+                  <span className="h-2 w-2 rounded-full bg-ink" />
+                </div>
+              </div>
+            </article>
           ))}
         </div>
 
