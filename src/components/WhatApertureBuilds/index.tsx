@@ -18,15 +18,9 @@ const chipTone = [
   "bg-[var(--en-chip-bg)] text-[var(--en-chip-tx)]",
 ];
 
-function WindowChrome({ title, children }: { title: string; children: React.ReactNode }) {
+function VisualFrame({ children }: { children: React.ReactNode }) {
   return (
     <div className="overflow-hidden rounded-[14px] bg-card shadow-panel ring-1 ring-hairline">
-      <div className="flex h-8 items-center gap-2 border-b border-hairline bg-surface px-4">
-        <span className="h-2 w-2 rounded-full bg-[#e76f61]" />
-        <span className="h-2 w-2 rounded-full bg-[#d6a23a]" />
-        <span className="h-2 w-2 rounded-full bg-[#6b9f75]" />
-        <span className="ml-2 font-mono text-[9px] uppercase tracking-[0.12em] text-ink-muted">{title}</span>
-      </div>
       {children}
     </div>
   );
@@ -36,7 +30,7 @@ function LeadSystemVisual() {
   const nodes = ["New enquiry", "AI qualification", "CRM update", "Slack alert", "Follow-up"];
 
   return (
-    <WindowChrome title="Lead system - live route">
+    <VisualFrame>
       <div className="grid gap-4 p-4 sm:p-6">
         <div className="rounded-[12px] bg-surface p-4 ring-1 ring-hairline">
           <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-ink-muted">Inbound enquiry</p>
@@ -67,7 +61,7 @@ function LeadSystemVisual() {
           </div>
         </div>
       </div>
-    </WindowChrome>
+    </VisualFrame>
   );
 }
 
@@ -80,7 +74,7 @@ function DashboardVisual() {
   ];
 
   return (
-    <WindowChrome title="Founder dashboard - weekly view">
+    <VisualFrame>
       <div className="p-4 sm:p-6">
         <div className="grid gap-3 sm:grid-cols-4">
           {metrics.map((metric) => (
@@ -111,7 +105,7 @@ function DashboardVisual() {
           </div>
         </div>
       </div>
-    </WindowChrome>
+    </VisualFrame>
   );
 }
 
@@ -125,7 +119,7 @@ function AgentVisual() {
   ];
 
   return (
-    <WindowChrome title="Agent queue - operational workflows">
+    <VisualFrame>
       <div className="grid gap-4 p-4 sm:grid-cols-[0.8fr_1.2fr] sm:p-6">
         <div className="rounded-[12px] bg-surface p-4 ring-1 ring-hairline">
           <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-ink-muted">Workflow</p>
@@ -153,7 +147,7 @@ function AgentVisual() {
           </div>
         </div>
       </div>
-    </WindowChrome>
+    </VisualFrame>
   );
 }
 
@@ -161,7 +155,7 @@ function CadenceVisual() {
   const items = ["Weekly scorecard prepared", "Founder summary posted", "Exceptions flagged", "Monday review queued"];
 
   return (
-    <WindowChrome title="Operating cadence - weekly summary">
+    <VisualFrame>
       <div className="grid gap-4 p-4 sm:grid-cols-[1fr_0.95fr] sm:p-6">
         <div className="rounded-[12px] bg-ink p-5 text-card">
           <p className="font-mono text-[9px] uppercase tracking-[0.14em] text-white/60">Monday operator note</p>
@@ -178,7 +172,7 @@ function CadenceVisual() {
           ))}
         </div>
       </div>
-    </WindowChrome>
+    </VisualFrame>
   );
 }
 
@@ -215,7 +209,7 @@ export function WhatApertureBuilds() {
               key={section.title}
               type="button"
               onClick={() => setActiveIndex(index)}
-              className={`rounded-md px-4 py-3 font-mono text-[10px] font-medium uppercase tracking-[0.14em] transition-colors duration-150 ${
+              className={`cursor-pointer rounded-md px-4 py-3 font-mono text-[10px] font-medium uppercase tracking-[0.14em] transition-colors duration-150 ${
                 activeIndex === index ? "bg-card text-ink shadow-[0_10px_26px_rgba(20,24,28,0.08)] ring-1 ring-hairline" : "text-ink-muted hover:bg-surface hover:text-ink"
               }`}
               aria-pressed={activeIndex === index}
@@ -225,7 +219,7 @@ export function WhatApertureBuilds() {
           ))}
         </div>
 
-        <div className={`mt-7 overflow-hidden rounded-[22px] bg-gradient-to-br p-5 shadow-panel sm:p-10 ${visualTone[activeIndex]}`}>
+        <div className={`mt-7 overflow-hidden rounded-[22px] bg-gradient-to-br p-5 shadow-panel transition-transform duration-150 hover:-translate-y-1 sm:p-10 ${visualTone[activeIndex]}`}>
           <div className="grid gap-8 lg:grid-cols-[0.72fr_1.28fr] lg:items-end">
             <div className="flex min-h-[260px] flex-col justify-between">
               <div>

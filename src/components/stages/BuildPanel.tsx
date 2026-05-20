@@ -9,7 +9,7 @@ const statusClass = {
 
 export function BuildPanel() {
   return (
-    <PanelFrame title="Build - systems in motion">
+    <PanelFrame>
       <div className="grid gap-3 pt-5 sm:grid-cols-2">
         {buildItems.map((item) => (
           <div key={item.title} className="min-h-[94px] rounded-[10px] bg-surface p-4 ring-1 ring-hairline">

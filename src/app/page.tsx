@@ -1,4 +1,3 @@
-import { Fragment } from "react";
 import { FinalCTA } from "@/components/FinalCTA";
 import { Footer } from "@/components/Footer";
 import { Hero } from "@/components/Hero";
@@ -27,11 +26,11 @@ export default function Home() {
       <main>
         <Hero />
         {stages.map((stage) => (
-          <Fragment key={stage.key}>
-            <Stage stage={stage}>{panels[stage.key]}</Stage>
-            {stage.key === "build" ? <WhatApertureBuilds /> : null}
-          </Fragment>
+          <Stage key={stage.key} stage={stage}>
+            {panels[stage.key]}
+          </Stage>
         ))}
+        <WhatApertureBuilds />
         <PracticeAreas />
         <Methodology />
         <FinalCTA />

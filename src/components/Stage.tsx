@@ -23,7 +23,7 @@ type StageProps = {
 export function Stage({ stage, children }: StageProps) {
   const visual = (
     <div
-      className={`relative flex min-h-[460px] items-center overflow-hidden rounded-[22px] bg-gradient-to-br ${gradientClass[stage.key]} p-6 shadow-panel sm:min-h-[540px] sm:p-14`}
+      className={`relative flex min-h-[460px] items-center overflow-hidden rounded-[22px] bg-gradient-to-br ${gradientClass[stage.key]} p-6 shadow-panel transition-transform duration-150 hover:-translate-y-1 sm:min-h-[540px] sm:p-14`}
     >
       <div className="absolute inset-0 bg-[radial-gradient(circle_at_78%_16%,rgba(255,255,255,0.62),transparent_30%),radial-gradient(circle_at_12%_88%,rgba(255,255,255,0.36),transparent_34%)]" />
       <div className="relative w-full">{children}</div>
@@ -31,7 +31,7 @@ export function Stage({ stage, children }: StageProps) {
   );
 
   const text = (
-    <article className="flex min-h-[460px] flex-col justify-between rounded-[22px] bg-card p-8 ring-1 ring-hairline sm:min-h-[540px] sm:p-14">
+    <article className="flex min-h-[460px] flex-col justify-between rounded-[22px] bg-card p-8 ring-1 ring-hairline transition-transform duration-150 hover:-translate-y-1 sm:min-h-[540px] sm:p-14">
       <p
         className={`w-fit rounded-md px-3 py-2 font-mono text-[12px] font-medium tracking-[0.12em] ${chipStyle[stage.key]}`}
       >

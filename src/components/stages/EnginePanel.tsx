@@ -3,7 +3,7 @@ import { PanelFrame } from "@/components/stages/PanelFrame";
 
 export function EnginePanel() {
   return (
-    <PanelFrame title="Engine - benchmark intelligence">
+    <PanelFrame>
       <div className="pt-4">
         {engineMetrics.map((metric) => (
           <div key={metric.label} className="flex items-start justify-between gap-4 border-b border-hairline py-5 last:border-0">

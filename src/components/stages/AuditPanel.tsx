@@ -9,7 +9,7 @@ const ringClass = {
 
 export function AuditPanel() {
   return (
-    <PanelFrame title="Diagnostic - operational scoring">
+    <PanelFrame>
       <div className="pt-3">
         {auditScores.map((score) => (
           <div key={score.label} className="flex items-center justify-between border-b border-hairline py-3 last:border-0">

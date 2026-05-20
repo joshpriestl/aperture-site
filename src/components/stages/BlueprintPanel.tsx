@@ -3,7 +3,7 @@ import { PanelFrame } from "@/components/stages/PanelFrame";
 
 export function BlueprintPanel() {
   return (
-    <PanelFrame title="Blueprint - implementation sequence">
+    <PanelFrame>
       <div className="pt-3">
         {blueprintItems.map((item, index) => (
           <div
