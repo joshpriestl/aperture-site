@@ -78,7 +78,7 @@ export function WhatWeDo() {
               <motion.article
                 key={stage.key}
                 layout
-                className={`overflow-hidden rounded-[24px] bg-[#eef2f5] shadow-[10px_10px_30px_rgba(20,24,28,0.08),-10px_-10px_30px_rgba(255,255,255,0.72)] transition-opacity duration-200 ${
+                className={`overflow-hidden rounded-[34px] bg-card text-ink shadow-[10px_10px_30px_rgba(20,24,28,0.08),-10px_-10px_30px_rgba(255,255,255,0.72)] transition-opacity duration-200 ${
                   isDimmed ? "opacity-45" : "opacity-100"
                 }`}
                 transition={{ layout: { type: "spring", stiffness: 170, damping: 24 } }}
@@ -90,15 +90,15 @@ export function WhatWeDo() {
                   aria-expanded={isActive}
                 >
                   <div className="min-w-0">
-                    <p className="font-mono text-[11px] font-medium uppercase tracking-[0.2em] text-ink-muted">
-                      {stage.name}
+                    <p className="font-mono text-[12px] font-medium uppercase tracking-[0.22em] text-ink">
+                      {stage.name.toUpperCase()}
                     </p>
                     <p className="mt-3 font-display text-[clamp(24px,2.8vw,36px)] font-normal leading-tight tracking-[-0.02em] text-ink">
                       {moduleCopy[stage.key].descriptor}
                     </p>
                   </div>
                   <motion.span
-                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-card font-display text-[30px] leading-none text-ink shadow-[inset_0_0_0_1px_var(--hairline),0_10px_24px_rgba(20,24,28,0.08)]"
+                    className="flex h-11 w-11 shrink-0 items-center justify-center rounded-full bg-ink font-display text-[30px] leading-none text-card shadow-[0_10px_24px_rgba(20,24,28,0.12)]"
                     animate={{ rotate: isActive ? 45 : 0 }}
                     transition={{ type: "spring", stiffness: 220, damping: 20 }}
                     aria-hidden="true"
