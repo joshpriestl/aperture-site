@@ -14,7 +14,7 @@ export function Founder() {
         <div className="mt-10 flex flex-col gap-8 lg:flex-row lg:items-start lg:gap-14">
           <div className="h-[200px] w-[200px] flex-shrink-0 overflow-hidden rounded-[14px] lg:h-[280px] lg:w-[280px]">
             <Image
-              src="/josh-priestley.jpg"
+              src="/josh-priestley.jpeg"
               alt="Josh Priestley"
               width={280}
               height={280}
