@@ -23,7 +23,7 @@ export function Nav() {
           href="/audit"
           className="rounded-full bg-ink px-4 py-2 text-[13px] leading-none text-card transition-opacity duration-150 hover:opacity-85"
         >
-          Start the Audit <span aria-hidden="true">&rarr;</span>
+          Take the Audit ↗
         </Link>
       </div>
     </nav>
