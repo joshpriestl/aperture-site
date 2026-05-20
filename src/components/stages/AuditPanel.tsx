@@ -1,4 +1,5 @@
 import { auditScores } from "@/lib/content";
+import { PanelFrame } from "@/components/stages/PanelFrame";
 
 const ringClass = {
   green: "border-[#5f876d] text-[#35513f]",
@@ -8,10 +9,7 @@ const ringClass = {
 
 export function AuditPanel() {
   return (
-    <div className="w-full rounded-[14px] bg-card p-5 shadow-panel ring-1 ring-white/70 sm:p-6">
-      <p className="border-b border-hairline pb-4 font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-ink-muted">
-        DIAGNOSTIC - OPERATIONAL SCORING
-      </p>
+    <PanelFrame title="Diagnostic - operational scoring">
       <div className="pt-3">
         {auditScores.map((score) => (
           <div key={score.label} className="flex items-center justify-between border-b border-hairline py-3 last:border-0">
@@ -24,6 +22,6 @@ export function AuditPanel() {
           </div>
         ))}
       </div>
-    </div>
+    </PanelFrame>
   );
 }

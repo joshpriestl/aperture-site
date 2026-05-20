@@ -140,6 +140,6 @@ export const finalCta = {
   cta: "Take the free Audit",
 };
 
-export const footerItems = ["© APERTURE 2026", "SELBORNE KING IMPRINT", "APTR.AU"] as const;
+export const footerItems = ["\u00a9 APERTURE 2026", "SELBORNE KING IMPRINT", "APTR.AU"] as const;
 
 export type PanelMap = Record<StageKey, ReactNode>;

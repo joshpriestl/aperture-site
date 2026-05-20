@@ -1,4 +1,5 @@
 import { buildItems } from "@/lib/content";
+import { PanelFrame } from "@/components/stages/PanelFrame";
 
 const statusClass = {
   green: "text-[#476b4f]",
@@ -8,10 +9,7 @@ const statusClass = {
 
 export function BuildPanel() {
   return (
-    <div className="w-full rounded-[14px] bg-card p-5 shadow-panel ring-1 ring-white/70 sm:p-6">
-      <p className="border-b border-hairline pb-4 font-mono text-[11px] font-medium uppercase tracking-[0.18em] text-ink-muted">
-        BUILD - SYSTEMS IN MOTION
-      </p>
+    <PanelFrame title="Build - systems in motion">
       <div className="grid gap-3 pt-5 sm:grid-cols-2">
         {buildItems.map((item) => (
           <div key={item.title} className="min-h-[94px] rounded-[10px] bg-surface p-4 ring-1 ring-hairline">
@@ -22,6 +20,6 @@ export function BuildPanel() {
           </div>
         ))}
       </div>
-    </div>
+    </PanelFrame>
   );
 }
