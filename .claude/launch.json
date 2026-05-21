@@ -1,0 +1,12 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "aperture-dev",
+      "runtimeExecutable": "npm",
+      "runtimeArgs": ["run", "dev", "--", "-p", "3001"],
+      "port": 3001,
+      "cwd": "C:\\Users\\catpr\\OneDrive\\Documents\\Aperture\\aperture-site"
+    }
+  ]
+}
