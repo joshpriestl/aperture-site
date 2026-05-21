@@ -271,6 +271,16 @@ export function QuestionsFlow({
       return;
     }
 
+    try {
+      await fetch("/api/sheets/sync", {
+        body: JSON.stringify({ assessment_id: assessment.id }),
+        headers: { "Content-Type": "application/json" },
+        method: "POST",
+      });
+    } catch {
+      // CRM sync is non-blocking; the report should still load.
+    }
+
     router.push(`/start/report/${assessment.id}`);
   }
 

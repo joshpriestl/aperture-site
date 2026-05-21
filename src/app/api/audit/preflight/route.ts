@@ -24,6 +24,36 @@ export async function GET() {
     detail: process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ? "Present" : "Missing",
   });
 
+  checks.push({
+    name: "SUPABASE_SERVICE_ROLE_KEY",
+    ok: Boolean(process.env.SUPABASE_SERVICE_ROLE_KEY),
+    detail: process.env.SUPABASE_SERVICE_ROLE_KEY ? "Present" : "Missing",
+  });
+
+  checks.push({
+    name: "STRIPE_SECRET_KEY",
+    ok: Boolean(process.env.STRIPE_SECRET_KEY),
+    detail: process.env.STRIPE_SECRET_KEY ? "Present" : "Missing",
+  });
+
+  checks.push({
+    name: "STRIPE_PRICE_ID",
+    ok: Boolean(process.env.STRIPE_PRICE_ID),
+    detail: process.env.STRIPE_PRICE_ID ? "Present" : "Missing",
+  });
+
+  checks.push({
+    name: "STRIPE_WEBHOOK_SECRET",
+    ok: Boolean(process.env.STRIPE_WEBHOOK_SECRET),
+    detail: process.env.STRIPE_WEBHOOK_SECRET ? "Present" : "Missing",
+  });
+
+  checks.push({
+    name: "GOOGLE_SHEETS_WEBHOOK_URL",
+    ok: Boolean(process.env.GOOGLE_SHEETS_WEBHOOK_URL),
+    detail: process.env.GOOGLE_SHEETS_WEBHOOK_URL ? "Present" : "Missing",
+  });
+
   let supabase;
 
   try {

@@ -1,4 +1,5 @@
 import { notFound } from "next/navigation";
+import Link from "next/link";
 import { createSupabaseClient } from "@/lib/supabase";
 
 // ── Practice area UUIDs ────────────────────────────────────────────────────────
@@ -89,6 +90,12 @@ type Finding = {
   finding_text: string;
 };
 
+type AnswerQuestion = {
+  format: string;
+  is_inverted: boolean;
+  practice_area_id: string;
+};
+
 // ── Helpers ────────────────────────────────────────────────────────────────────
 
 function fmt(n: number): string {
@@ -101,6 +108,13 @@ function fmt(n: number): string {
 function getPracticeArea(row: ScoreRow) {
   if (!row.practice_areas) return null;
   return Array.isArray(row.practice_areas) ? row.practice_areas[0] : row.practice_areas;
+}
+
+function getAnswerQuestion(
+  questions: AnswerQuestion | AnswerQuestion[] | null,
+) {
+  if (!questions) return null;
+  return Array.isArray(questions) ? questions[0] : questions;
 }
 
 function computeCOI(
@@ -251,7 +265,7 @@ export default async function ReportPage({ params }: Props) {
     scoreMap,
   );
 
-  // Priority areas — 3 lowest scoring
+  // Priority areas - 3 lowest scoring
   const priorityScores = [...scores]
     .sort((a, b) => (a.score ?? 100) - (b.score ?? 100))
     .slice(0, 3);
@@ -266,7 +280,7 @@ export default async function ReportPage({ params }: Props) {
   // Determine which questions fired a trigger condition
   const fired = new Map<string, string>();
   for (const a of rawAnswers ?? []) {
-    const q = a.questions as { format: string; is_inverted: boolean; practice_area_id: string } | null;
+    const q = getAnswerQuestion(a.questions as AnswerQuestion | AnswerQuestion[] | null);
     if (!q || !priorityAreaIds.includes(q.practice_area_id)) continue;
     const resp = (a.raw_response ?? "").toLowerCase();
     if (q.format === "yes_no" && !q.is_inverted && resp === "no") {
@@ -278,7 +292,7 @@ export default async function ReportPage({ params }: Props) {
     }
   }
 
-  // Fetch all findings — 140 rows, filter in TypeScript (avoids .in() PostgREST issue)
+  // Fetch all findings - 140 rows, filter in TypeScript (avoids .in() PostgREST issue)
   const { data: allFindings } = await supabase
     .from("findings_library")
     .select("practice_area_id, trigger_question_id, trigger_condition, gap_band, severity, finding_text")
@@ -341,15 +355,18 @@ export default async function ReportPage({ params }: Props) {
               Cost of Inaction
             </p>
             <p className="mt-4 font-display text-[clamp(36px,9vw,76px)] font-normal leading-none text-ink">
-              {fmt(coiLow)} — {fmt(coiHigh)}
+              {fmt(coiLow)} to {fmt(coiHigh)}
             </p>
             <p className="mt-1.5 font-mono text-[11px] text-ink-muted">per year</p>
             <p className="mt-6 max-w-[520px] text-[15px] leading-[1.75] text-ink-soft">
               {coiSentence}
             </p>
-            <p className="mt-5 text-[12px] text-ink-muted underline underline-offset-2 cursor-default">
+            <Link
+              className="mt-5 inline-flex text-[12px] text-ink-muted underline underline-offset-2 transition-colors hover:text-ink"
+              href="/start/methodology"
+            >
               How this is calculated
-            </p>
+            </Link>
           </div>
         </section>
 
@@ -383,7 +400,7 @@ export default async function ReportPage({ params }: Props) {
                       </div>
                     </div>
                     <span className="font-mono text-[15px] text-ink shrink-0 mt-0.5">
-                      {s.score ?? "—"}
+                      {s.score ?? "N/A"}
                     </span>
                   </div>
                   <div className="mt-3 ml-9 h-[2px] rounded-none bg-hairline overflow-hidden">
@@ -416,7 +433,7 @@ export default async function ReportPage({ params }: Props) {
                   </h3>
                   <div className="flex items-baseline gap-3 shrink-0">
                     <span className="font-mono text-[14px] text-ink">
-                      {s.score ?? "—"}
+                      {s.score ?? "N/A"}
                     </span>
                     {s.gap_band && (
                       <span className="font-mono text-[9px] uppercase tracking-[0.18em] text-ink-muted">
@@ -459,7 +476,7 @@ export default async function ReportPage({ params }: Props) {
           <div className="mt-8 flex flex-col items-start gap-5 sm:flex-row sm:items-center">
             <a
               className="inline-flex items-center rounded-full bg-ink px-7 py-3.5 font-sans text-[14px] font-medium text-card transition-opacity hover:opacity-80"
-              href="#"
+              href={`/blueprint/checkout?assessment_id=${params.id}`}
             >
               Book Aperture Blueprint
             </a>
