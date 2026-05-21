@@ -55,8 +55,11 @@ export async function createStripeCheckoutSession({
     throw new Error("Missing STRIPE_SECRET_KEY or STRIPE_PRICE_ID");
   }
 
-  const successUrl = new URL("/blueprint/success", baseUrl);
-  successUrl.searchParams.set("session_id", "{CHECKOUT_SESSION_ID}");
+  // {CHECKOUT_SESSION_ID} must NOT be URL-encoded — concatenate it directly
+  // so Stripe can substitute the real session ID on redirect.
+  const successUrl =
+    new URL("/blueprint/success", baseUrl).toString() +
+    "?session_id={CHECKOUT_SESSION_ID}";
 
   const cancelUrl = new URL("/blueprint/checkout", baseUrl);
   cancelUrl.searchParams.set("assessment_id", assessmentId);
