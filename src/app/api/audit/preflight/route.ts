@@ -1,4 +1,5 @@
 import { NextResponse } from "next/server";
+import { createSupabaseAdminClient } from "@/lib/supabase-admin";
 import { createSupabaseClient } from "@/lib/supabase";
 
 export const dynamic = "force-dynamic";
@@ -103,6 +104,27 @@ export async function GET() {
       ? assessments.error.message
       : `${assessments.count ?? 0} visible rows`,
   });
+
+  try {
+    const admin = createSupabaseAdminClient();
+    const adminAssessments = await admin
+      .from("assessments")
+      .select("id", { count: "exact", head: true });
+
+    checks.push({
+      name: "service role assessments read",
+      ok: !adminAssessments.error,
+      detail: adminAssessments.error
+        ? adminAssessments.error.message
+        : `${adminAssessments.count ?? 0} visible rows`,
+    });
+  } catch (error) {
+    checks.push({
+      name: "service role assessments read",
+      ok: false,
+      detail: error instanceof Error ? error.message : "Service role check failed",
+    });
+  }
 
   return NextResponse.json({
     ok: checks.every((check) => check.ok),

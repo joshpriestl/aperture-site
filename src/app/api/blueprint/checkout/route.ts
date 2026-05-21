@@ -1,5 +1,5 @@
 import { NextRequest, NextResponse } from "next/server";
-import { createSupabaseAdminClient } from "@/lib/supabase-admin";
+import { createSupabaseClient } from "@/lib/supabase";
 import { createStripeCheckoutSession } from "@/lib/stripe";
 
 export const dynamic = "force-dynamic";
@@ -34,7 +34,7 @@ export async function POST(request: NextRequest) {
   let supabase;
 
   try {
-    supabase = createSupabaseAdminClient();
+    supabase = createSupabaseClient();
   } catch (error) {
     return NextResponse.json(
       { error: error instanceof Error ? error.message : "Supabase is not configured" },
