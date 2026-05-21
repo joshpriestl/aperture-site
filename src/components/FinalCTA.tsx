@@ -8,14 +8,17 @@ export function FinalCTA() {
         <h2 className="font-display text-[clamp(36px,4.5vw,64px)] font-normal leading-[1.05] tracking-[-0.022em] text-ink">
           {finalCta.headline}
         </h2>
-        <p className="mx-auto mt-7 max-w-[560px] text-[16px] leading-7 text-ink-soft">{finalCta.body}</p>
+        <p className="mx-auto mt-7 max-w-[560px] text-[16px] leading-7 text-ink-soft">
+          {finalCta.body}
+        </p>
         <Link
-          href="/audit"
+          href="/start"
           className="mt-10 inline-flex rounded-full bg-ink px-6 py-3 text-[13px] text-card transition-opacity duration-150 hover:opacity-85"
         >
-          {finalCta.cta} ↗
+          {finalCta.cta}
         </Link>
       </div>
     </section>
   );
 }
+

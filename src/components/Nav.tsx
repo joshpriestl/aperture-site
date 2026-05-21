@@ -20,12 +20,13 @@ export function Nav() {
           ))}
         </div>
         <Link
-          href="/audit"
+          href="/start"
           className="rounded-full bg-ink px-4 py-2 text-[13px] leading-none text-card transition-opacity duration-150 hover:opacity-85"
         >
-          Take the Audit ↗
+          Take the Audit
         </Link>
       </div>
     </nav>
   );
 }
+

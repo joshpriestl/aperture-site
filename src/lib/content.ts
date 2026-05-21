@@ -28,7 +28,7 @@ export const hero = {
   headline: "Diagnose what's leaking. Build what's missing.",
   subhead:
     "An operations firm for scaling consultancies, agencies, advisory firms and hospitality groups. The free Audit takes 15 minutes. You leave with a defensible operational score, a quantified cost of inaction and three priority interventions.",
-  cta: "Take the free Audit — 15 minutes",
+  cta: "Take the free Audit, 15 minutes",
 };
 
 export const stages: Stage[] = [

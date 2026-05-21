@@ -246,10 +246,10 @@ export function WhatApertureBuilds() {
 
         <div className="mt-10 text-center">
           <Link
-            href="/audit"
+            href="/start"
             className="inline-flex rounded-full bg-ink px-6 py-3 text-[13px] text-card transition-opacity duration-150 hover:opacity-85"
           >
-            {whatApertureBuilds.cta} ↗
+            {whatApertureBuilds.cta}
           </Link>
         </div>
       </div>

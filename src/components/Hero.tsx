@@ -15,12 +15,13 @@ export function Hero() {
           {hero.subhead}
         </p>
         <Link
-          href="/audit"
+          href="/start"
           className="mt-10 inline-flex rounded-full bg-ink px-6 py-3 text-[13px] text-card transition-opacity duration-150 hover:opacity-85"
         >
-          {hero.cta} ↗
+          {hero.cta}
         </Link>
       </div>
     </section>
   );
 }
+
