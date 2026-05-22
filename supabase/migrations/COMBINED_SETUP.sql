@@ -562,3 +562,11 @@ grant select, insert, update, delete on public.blueprint_documents    to service
 -- service_role admin client before upserting into blueprint_assessments.
 -- Without SELECT the lookup returns empty data and the webhook returns 404.
 grant select on public.assessments to service_role;
+
+
+-- ============================================================
+-- 010 blueprint answers service_role regrant
+-- ============================================================
+
+grant select, insert, update, delete on public.blueprint_assessments to service_role;
+grant select, insert, update, delete on public.blueprint_answers to service_role;

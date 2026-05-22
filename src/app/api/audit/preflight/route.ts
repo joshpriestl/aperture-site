@@ -55,6 +55,18 @@ export async function GET() {
     detail: process.env.GOOGLE_SHEETS_WEBHOOK_URL ? "Present" : "Missing",
   });
 
+  checks.push({
+    name: "GOOGLE_SHEETS_WEBHOOK_SECRET",
+    ok: Boolean(process.env.GOOGLE_SHEETS_WEBHOOK_SECRET),
+    detail: process.env.GOOGLE_SHEETS_WEBHOOK_SECRET ? "Present" : "Missing",
+  });
+
+  checks.push({
+    name: "ADMIN_ACCESS_TOKEN",
+    ok: Boolean(process.env.ADMIN_ACCESS_TOKEN),
+    detail: process.env.ADMIN_ACCESS_TOKEN ? "Present" : "Missing",
+  });
+
   let supabase;
 
   try {

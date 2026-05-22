@@ -10,6 +10,7 @@ type Props = {
 type BlueprintAssessment = {
   id: string;
   paid: boolean;
+  questions_complete: boolean;
 };
 
 export default async function BlueprintSuccessPage({ searchParams }: Props) {
@@ -20,7 +21,7 @@ export default async function BlueprintSuccessPage({ searchParams }: Props) {
       const supabase = createSupabaseClient();
       const { data } = await supabase
         .from("blueprint_assessments")
-        .select("id, paid")
+        .select("id, paid, questions_complete")
         .eq("stripe_checkout_session_id", searchParams.session_id)
         .maybeSingle<BlueprintAssessment>();
 
@@ -54,9 +55,15 @@ export default async function BlueprintSuccessPage({ searchParams }: Props) {
         {isConfirmed ? (
           <Link
             className="mt-10 inline-flex w-fit rounded-full bg-ink px-6 py-3 text-[13px] text-card transition-opacity duration-150 hover:opacity-85"
-            href="/blueprint/booking"
+            href={
+              blueprintAssessment?.questions_complete
+                ? "/blueprint/booking"
+                : `/blueprint/questions?blueprint_id=${blueprintAssessment?.id}`
+            }
           >
-            Book review call
+            {blueprintAssessment?.questions_complete
+              ? "Book review call"
+              : "Start Blueprint questions"}
           </Link>
         ) : null}
       </section>
