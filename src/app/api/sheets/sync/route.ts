@@ -203,9 +203,23 @@ export async function POST(request: NextRequest) {
     method: "POST",
   });
 
+  const responseText = await response.text();
+
   if (!response.ok) {
     return NextResponse.json(
-      { error: await response.text() },
+      { error: responseText },
+      { status: 502 },
+    );
+  }
+
+  const result = JSON.parse(responseText || "{}") as {
+    ok?: boolean;
+    error?: string;
+  };
+
+  if (!result.ok) {
+    return NextResponse.json(
+      { error: result.error ?? "Google Sheets webhook did not confirm sync" },
       { status: 502 },
     );
   }
